@@ -1,0 +1,32 @@
+<div style="padding: 60px;margin: 0 auto; width: max-content;">
+    <div>
+        <h1>Usuário</h1>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>E-mail</mat-label>
+            <input matInput type="email" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Birth Date</mat-label>
+            <input [formControl]="birthDate" matInput type="date" required>
+            <mat-error *ngIf="birthDate.invalid">{{ getErrorMessage() }}</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Company</mat-label>
+            <mat-select [formControl]="company" required>
+                <mat-option *ngFor="let ids of companyIds" [value]="ids.value">
+                    {{ids.viewValue}}
+                  </mat-option>
+            </mat-select>
+            <mat-error *ngIf="company.invalid">{{ getErrorMessage() }}</mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <a mat-stroked-button color="primary" style="margin-right: 10px;" href="/usuarios">Voltar</a>
+        <button mat-raised-button color="primary" (click)="enviar()"> {{ userId == null ? 'Salvar' : 'Editar' }} </button>
+    </div>
+</div>

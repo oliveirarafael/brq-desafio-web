@@ -1,0 +1,67 @@
+<div style="padding: 60px;">
+<div>
+    <mat-form-field style="padding: 10px;">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" (input)="email = $event.target.value">
+      </mat-form-field>
+      <button mat-stroked-button color="primary" style="margin: 10px;" (click)="usuariosPorEmail()">Pesquisar</button>
+      <mat-form-field>
+        <mat-label>Company</mat-label>
+        <mat-select type="number" [(value)]="companyId">
+            <mat-option value="1">1</mat-option>
+            <mat-option value="2">2</mat-option>
+            <mat-option value="5">5</mat-option>
+            <mat-option value="7">7</mat-option>
+            <mat-option value="10">10</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-stroked-button color="primary" style="margin: 10px;" (click)="usuariosPorCompany()">Pesquisar</button>
+      <button mat-stroked-button color="primary" style="margin: 10px;" (click)="todosUsuarios()">Todos</button>
+      <a mat-raised-button color="primary" style="margin: 10px;" href="/usuarios/cadastro">Novo</a>
+</div>
+<diV>
+    <mat-table [dataSource]="usuarios" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.userId}} </mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef> E-MAIL </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="birthDate">
+          <mat-header-cell *matHeaderCellDef> Birth Date </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.birthDate}} </mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="companyId">
+          <mat-header-cell *matHeaderCellDef> COMPANY ID </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.companyId}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="deletar">
+          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <mat-cell *matCellDef="let element"> 
+            <button mat-icon-button color="primary" (click)="deletarUsuario(element.userId)">
+              Deletar
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="editar">
+          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <mat-cell *matCellDef="let element"> 
+            <a mat-icon-button color="primary" [href]="'/usuarios/cadastro/'+element.userId">
+              Editar
+            </a>
+          </mat-cell>
+        </ng-container>
+        
+      
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</diV>
+</div>
