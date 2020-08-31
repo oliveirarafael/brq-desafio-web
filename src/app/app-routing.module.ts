@@ -24,29 +24,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-
-/*const routes: Routes = [
-  { 
-      path: 'user/:userName', 
-      component: PhotoListComponent,
-      resolve: {
-          photos: PhotoListResolver
-      }
-  },
-  { 
-      path: 'p/add', 
-      component: PhotoFormComponent 
-  },
-  { 
-      path: '**', 
-      component: NotFoundComponent 
-  }  
-];
-
-@NgModule({
-  imports: [ 
-      RouterModule.forRoot(routes) 
-  ],
-  exports: [ RouterModule ]
-})*/
